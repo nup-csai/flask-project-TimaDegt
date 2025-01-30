@@ -15,6 +15,8 @@ After that you can open http://localhost:8080/ and view the application.
 
 You can view the API documentation on http://localhost:8080/api/docs/ .
 
+To add: web app.
+
 ## Requirements
 
 Flask
