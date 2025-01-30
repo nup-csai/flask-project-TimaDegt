@@ -2,3 +2,5 @@ Flask
 requests
 pytest
 flask_sqlalchemy
+flask-restx
+flask-swagger-ui==4.11.1
