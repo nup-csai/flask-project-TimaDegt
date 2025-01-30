@@ -47,3 +47,7 @@ Docker
 * The project's features work
 * The project passes the tests
 * The project can be used in real life (for trainings)
+
+## Video Link:
+
+https://youtu.be/waLMj6kKKcg
