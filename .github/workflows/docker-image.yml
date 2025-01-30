@@ -2,23 +2,26 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Run tests
-        run: |
-          python -m unittest app/client.py
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag workout-tracker
+
+      - name: Run the Docker container
+        run: docker run -d -p 8080:8080 --name workout-tracker-container workout-tracker
+
+      - name: Give the application a head-start
+        run: sleep 10  # Wait for the Flask app to start
+
+      - name: Run tests inside the container
+        run: docker exec workout-tracker-container python ./app/client.py
