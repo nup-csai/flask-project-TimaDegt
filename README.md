@@ -3,37 +3,43 @@
 
 ## Description
 
-The project consist of an application for tracking your progress in sport. It will remind you when to start practicing, suggest the exercises and their amount and help keep track of lengths of sets, lengths of pauses and amounts you already did/have to do.
+The project consist of an application for advicing you a training programme, i.e. a set of exercises united in workout trainings. It supports tracking your progress, helping you track pauses between sets of exercises, and also you can even create your own WorkOut routine and add your own exercises to it, as well as delete them anytime. They will stay saved in the database until you delete them.
 
 ## Setup
 
-Describe the steps to set up the environment and run the application. This can be a bash script or docker commands.
+```
+docker-compose up --build
 
 ```
-Your commands
-
-```
+After that you can open http://localhost:8080/ and view the application.
 
 ## Requirements
 
-Describe technologies, libraries, languages you are using (this can be updated in the future).
+Flask
+requests
+pytest
+flask_sqlalchemy
+flask-restx
+flask-swagger-ui==4.11.1
+
+or
+
+Docker
 
 ## Features
 
-Describe the main features the application performs.
-
-* Have a table that would contain past trainings and your successes in previous trainings (i.e. number of pushups you did in last session)
-* Have a dynamic timer, for which, when you start it it automatically switches between exercise time/pause time and show which exercise is upcoming/you're currently doing
-* possibility to input goals, results, etc
-* a dynamic progress bar changing throughout the training
+* Has a database with already added (by me) exercises and whole workout routines.
+* Supports creating your own workout routines and adding or deleting exercises from it.
+* Supports a timer that helps track time between sets.
+* (to be added) Training mode
 
 ## Git
 
-Specify which branch will store the latest stable version of the application
+"Master" branch, https://github.com/nup-csai/flask-project-TimaDegt/tree/master
 
 ## Success Criteria
 
-Describe the criteria by which the success of the project can be determined
-(this will be updated in the future)
-
-* Criteria 1
+* The project can be built without mistakes
+* The project's features work
+* The project passes the tests
+* The project can be used in real life (for trainings)
