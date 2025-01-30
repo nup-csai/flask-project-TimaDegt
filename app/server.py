@@ -209,5 +209,45 @@ def start_timer():
     end_time = datetime.now().timestamp() + duration
     return jsonify({'end_time': end_time}), 200
 
+@app.route('/api/workouts/<int:workout_id>', methods=['DELETE'])
+def delete_workout(workout_id):
+    """
+    Delete a workout.
+    ---
+    parameters:
+      - name: workout_id
+        in: path
+        type: integer
+        required: true
+    responses:
+      200:
+        description: Workout deleted successfully.
+    """
+    conn = get_db_connection()
+    conn.execute('DELETE FROM workouts WHERE id = ?', (workout_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({'message': 'Workout deleted successfully'}), 200
+
+@app.route('/api/exercises/<int:exercise_id>', methods=['DELETE'])
+def delete_exercise(exercise_id):
+    """
+    Delete an exercise.
+    ---
+    parameters:
+      - name: exercise_id
+        in: path
+        type: integer
+        required: true
+    responses:
+      200:
+        description: Exercise deleted successfully.
+    """
+    conn = get_db_connection()
+    conn.execute('DELETE FROM exercises WHERE id = ?', (exercise_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({'message': 'Exercise deleted successfully'}), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
